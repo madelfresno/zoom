@@ -74,7 +74,11 @@
 				top = Math.max(Math.min(top, sourceHeight), 0);
 				left = Math.max(Math.min(left, sourceWidth), 0);
 
-				img.style.left = (left * -xRatio) + 'px';
+        // We consider the scale factor of any transform
+				var element = document.querySelector('body');
+				var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+
+				img.style.left = (left * -xRatio) / scaleX + 'px';
 				img.style.top = (top * -yRatio) + 'px';
 			}
 		};
@@ -220,7 +224,7 @@
 							}
 						});
 				}
-				
+
 				if ($.isFunction(settings.callback)) {
 					settings.callback.call(img);
 				}
