@@ -77,9 +77,10 @@
         // We consider the scale factor of any transform
 				var element = document.querySelector('body');
 				var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+				var scaleY = element.getBoundingClientRect().height / element.offsetHeight;
 
 				img.style.left = (left * -xRatio) / scaleX + 'px';
-				img.style.top = (top * -yRatio) + 'px';
+				img.style.top = (top * -yRatio) / scaleY + 'px';
 			}
 		};
 	};
